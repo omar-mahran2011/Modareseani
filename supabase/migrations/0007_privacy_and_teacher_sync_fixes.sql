@@ -6,8 +6,9 @@
 -- 1. `teachers.display_name / avatar_url / governorate_id / city_id / phone`
 --    are meant to be a denormalized, always-in-sync copy of the matching
 --    `profiles` fields (see the design note in 0002_tables.sql), but no
---    trigger ever actually synced them. This adds that trigger and backfills
---    initial values on teacher-row creation.
+--    trigger ever actually synced them — and `profiles.phone` itself didn't
+--    even exist yet. This adds the missing column, the sync trigger, and
+--    backfills initial values on teacher-row creation.
 --
 -- 2. `profiles_select_authenticated` (0004) granted every signed-in user
 --    read access to every OTHER user's profiles row, including their email
@@ -37,6 +38,13 @@ $$;
 alter table public.teachers
   add column if not exists education_system public.education_system,
   add column if not exists available_times text not null default '';
+
+-- `phone` is edited as a *shared* profile field throughout the app (signup,
+-- settings, admin edit) and denormalized down onto `teachers.phone` — but
+-- `profiles` itself never actually had this column (only `teachers` did).
+-- Everything below assumes it exists, so add it first.
+alter table public.profiles
+  add column if not exists phone text;
 
 -- ---------------------------------------------------------------------------
 -- 1b. sync_teacher_public_fields(): keeps the denormalized copy on `teachers`

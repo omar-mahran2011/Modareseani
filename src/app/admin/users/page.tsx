@@ -14,7 +14,7 @@ export default async function AdminUsersPage() {
   const users = await getAllUsersForAdmin(supabase);
 
   if (users.length === 0) {
-    return <EmptyState icon={Users} title="لا يوجد مستخدمون بعد" />;
+    return <EmptyState icon={<Users className="size-6" />} title="لا يوجد مستخدمون بعد" />;
   }
 
   return (

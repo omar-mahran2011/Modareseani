@@ -60,16 +60,6 @@ export default async function TeachersPage({
     : undefined;
   const currentCityName = cityId ? cities.find((c) => c.id === cityId)?.name : undefined;
 
-  function buildHref(targetPage: number) {
-    const sp = new URLSearchParams();
-    Object.entries(params).forEach(([key, value]) => {
-      if (value && key !== "page") sp.set(key, value);
-    });
-    if (targetPage > 1) sp.set("page", String(targetPage));
-    const qs = sp.toString();
-    return qs ? `/teachers?${qs}` : "/teachers";
-  }
-
   return (
     <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
       <div className="mb-6">
@@ -101,7 +91,7 @@ export default async function TeachersPage({
 
       {teachers.length === 0 ? (
         <EmptyState
-          icon={Users2}
+          icon={<Users2 className="size-6" />}
           title="لا يوجد معلمون مطابقون"
           description="جرّب توسيع نطاق البحث أو تغيير الفلاتر المستخدمة."
         />
@@ -116,7 +106,7 @@ export default async function TeachersPage({
             ))}
           </div>
           <div className="mt-8">
-            <Pagination currentPage={page} totalPages={totalPages} buildHref={buildHref} />
+            <Pagination currentPage={page} totalPages={totalPages} basePath="/teachers" searchParams={params} />
           </div>
         </>
       )}

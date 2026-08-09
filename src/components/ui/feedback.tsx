@@ -34,21 +34,21 @@ export function TeacherCardSkeleton() {
 }
 
 export function EmptyState({
-  icon: Icon,
+  icon,
   title,
   description,
   action,
 }: {
-  icon?: React.ComponentType<{ className?: string }>;
+  icon?: React.ReactNode;
   title: string;
   description?: string;
   action?: React.ReactNode;
 }) {
   return (
     <div className="flex flex-col items-center justify-center gap-3 rounded-2xl border border-dashed border-ink-200 bg-white/60 px-6 py-16 text-center dark:border-ink-700 dark:bg-ink-800/30">
-      {Icon && (
+      {icon && (
         <div className="mb-1 flex size-12 items-center justify-center rounded-full bg-ink-100 text-ink-500 dark:bg-ink-700 dark:text-ink-300">
-          <Icon className="size-6" />
+          {icon}
         </div>
       )}
       <p className="font-display text-lg font-semibold text-ink-800 dark:text-ink-100">{title}</p>
@@ -102,13 +102,27 @@ export function SubmitButton({
 export function Pagination({
   currentPage,
   totalPages,
-  buildHref,
+  basePath,
+  searchParams = {},
 }: {
   currentPage: number;
   totalPages: number;
-  buildHref: (page: number) => string;
+  /** e.g. "/teachers" */
+  basePath: string;
+  /** Current filter query params (excluding "page") to preserve across page links. */
+  searchParams?: Record<string, string | undefined>;
 }) {
   if (totalPages <= 1) return null;
+
+  function buildHref(targetPage: number) {
+    const sp = new URLSearchParams();
+    Object.entries(searchParams).forEach(([key, value]) => {
+      if (value && key !== "page") sp.set(key, value);
+    });
+    if (targetPage > 1) sp.set("page", String(targetPage));
+    const qs = sp.toString();
+    return qs ? `${basePath}?${qs}` : basePath;
+  }
 
   const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 

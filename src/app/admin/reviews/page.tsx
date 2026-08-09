@@ -12,7 +12,7 @@ export default async function AdminReviewsPage() {
   const reviews = await getAllReviewsForAdmin(supabase);
 
   if (reviews.length === 0) {
-    return <EmptyState icon={MessageSquare} title="لا توجد تقييمات بعد" />;
+    return <EmptyState icon={<MessageSquare className="size-6" />} title="لا توجد تقييمات بعد" />;
   }
 
   return <ReviewsTable reviews={reviews} />;

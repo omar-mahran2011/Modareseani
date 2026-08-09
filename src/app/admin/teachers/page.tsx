@@ -12,7 +12,7 @@ export default async function AdminTeachersPage() {
   const teachers = await getAllTeachersForAdmin(supabase);
 
   if (teachers.length === 0) {
-    return <EmptyState icon={GraduationCap} title="لا يوجد معلمون بعد" />;
+    return <EmptyState icon={<GraduationCap className="size-6" />} title="لا يوجد معلمون بعد" />;
   }
 
   return <TeachersTable teachers={teachers} />;
