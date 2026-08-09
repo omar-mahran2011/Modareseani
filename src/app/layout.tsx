@@ -6,6 +6,7 @@ import { SITE_NAME } from "@/lib/constants";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://modareseani.vercel.app"),
   title: {
     default: `${SITE_NAME} | ابحث عن معلمك الخصوصي بسهولة`,
     template: `%s | ${SITE_NAME}`,
