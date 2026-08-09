@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+/* Class-based dark mode for Tailwind v4 (paired with next-themes attribute="class") */
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --font-display: "Cairo", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Tajawal", ui-sans-serif, system-ui, sans-serif;
+
+  /* Ink (navy) — primary brand color, headers, dark surfaces */
+  --color-ink-50: #eef1f7;
+  --color-ink-100: #dbe2ec;
+  --color-ink-200: #b6c3d9;
+  --color-ink-300: #8ea0bf;
+  --color-ink-400: #5e7299;
+  --color-ink-500: #3d5078;
+  --color-ink-600: #283a5c;
+  --color-ink-700: #1c2c49;
+  --color-ink-800: #131f38;
+  --color-ink-900: #0c1526;
+  --color-ink-950: #070d18;
+
+  /* Gold — the "chalk mark" accent: ratings, highlights, primary CTAs */
+  --color-gold-50: #fdf7ea;
+  --color-gold-100: #faecc8;
+  --color-gold-200: #f4d78d;
+  --color-gold-300: #ecbe5b;
+  --color-gold-400: #dfa23b;
+  --color-gold-500: #c2842a;
+  --color-gold-600: #9c6720;
+  --color-gold-700: #7a501b;
+
+  /* Teal — published / verified / success state */
+  --color-teal-50: #eaf6f1;
+  --color-teal-100: #cbe9dc;
+  --color-teal-400: #3fa480;
+  --color-teal-500: #2f8f6e;
+  --color-teal-600: #237357;
+
+  --color-paper: #f6f7fb;
+  --color-paper-dark: #0c1526;
+}
+
+@layer base {
+  * {
+    border-color: theme(--color-ink-100);
+  }
+  .dark * {
+    border-color: theme(--color-ink-700);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: var(--color-paper);
+    color: var(--color-ink-900);
+  }
+
+  .dark body {
+    background-color: var(--color-paper-dark);
+    color: var(--color-ink-50);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display);
+  }
+
+  /* Visible keyboard focus everywhere, RTL-safe */
+  :focus-visible {
+    outline: 2px solid var(--color-gold-400);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background-color: var(--color-gold-200);
+    color: var(--color-ink-900);
+  }
+}
+
+@layer utilities {
+  .scrollbar-thin::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: var(--color-ink-200);
+    border-radius: 9999px;
+  }
+  .dark .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: var(--color-ink-600);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

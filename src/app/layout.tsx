@@ -1,0 +1,49 @@
+import type { Metadata, Viewport } from "next";
+import { Providers } from "@/components/layout/providers";
+import { Navbar } from "@/components/layout/navbar";
+import { Footer } from "@/components/layout/footer";
+import { SITE_NAME } from "@/lib/constants";
+import "./globals.css";
+
+export const metadata: Metadata = {
+  title: {
+    default: `${SITE_NAME} | ابحث عن معلمك الخصوصي بسهولة`,
+    template: `%s | ${SITE_NAME}`,
+  },
+  description:
+    "دليل المعلمين يساعدك على إيجاد أفضل المعلمين الخصوصيين في محافظتك ومدينتك، مع تقييمات حقيقية من الطلاب وأولياء الأمور.",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f6f7fb" },
+    { media: "(prefers-color-scheme: dark)", color: "#0c1526" },
+  ],
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="ar" dir="rtl" suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* eslint-disable-next-line @next/next/no-page-custom-font -- root layout applies these globally */}
+        <link
+          href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;600;700;800&family=Tajawal:wght@400;500;700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="min-h-screen font-body antialiased">
+        <Providers>
+          <div className="flex min-h-screen flex-col">
+            <Navbar />
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </div>
+        </Providers>
+      </body>
+    </html>
+  );
+}
