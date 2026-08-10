@@ -13,6 +13,12 @@ export const metadata: Metadata = {
   },
   description:
     "دليل المعلمين يساعدك على إيجاد أفضل المعلمين الخصوصيين في محافظتك ومدينتك، مع تقييمات حقيقية من الطلاب وأولياء الأمور.",
+  verification: {
+    // Set GOOGLE_SITE_VERIFICATION in your environment variables (the code
+    // Google Search Console gives you when you choose the "HTML tag"
+    // verification method) — no code changes or file uploads needed.
+    google: process.env.GOOGLE_SITE_VERIFICATION,
+  },
 };
 
 export const viewport: Viewport = {
