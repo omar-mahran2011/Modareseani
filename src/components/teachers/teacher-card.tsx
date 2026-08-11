@@ -10,7 +10,7 @@ export function TeacherCard({ teacher }: { teacher: TeacherWithProfile }) {
   return (
     <Link
       href={`/teachers/${teacher.profile_id}`}
-      className="group flex flex-col rounded-2xl border border-ink-100 bg-white p-4 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md dark:border-ink-700 dark:bg-ink-800/60"
+      className="group relative flex flex-col rounded-2xl border border-ink-100 bg-white p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-gold-300 hover:shadow-xl hover:shadow-ink-900/5 dark:border-ink-700 dark:bg-ink-800/60 dark:hover:border-gold-400/40"
     >
       <div className="flex items-start gap-3.5">
         <Avatar src={teacher.avatar_url} name={teacher.display_name} size={64} className="shrink-0" />
