@@ -3,6 +3,7 @@ import { ReviewList } from "@/components/teachers/review-list";
 import { WhatsAppButton } from "@/components/teachers/whatsapp-button";
 import { CopyLinkButton } from "@/components/teachers/copy-link-button";
 import { Avatar, Badge, Card } from "@/components/ui/card";
+import { BackButton } from "@/components/ui/back-button";
 import { RatingBadge, StarRatingDisplay } from "@/components/ui/star-rating";
 import {
   EDUCATION_SYSTEM_LABELS,
@@ -57,7 +58,8 @@ export default async function TeacherProfilePage({
   ]);
 
   return (
-    <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6">
+    <div className="mx-auto max-w-4xl animate-fade-in px-4 py-8 sm:px-6">
+      <BackButton fallbackHref="/teachers" label="رجوع لدليل المعلمين" className="mb-4" />
       {!teacher.is_published && (
         <div className="mb-4 rounded-xl bg-gold-100 px-4 py-2.5 text-sm text-gold-700 dark:bg-gold-400/10 dark:text-gold-300">
           هذا الملف غير منشور حاليًا ولا يظهر في نتائج البحث العامة.

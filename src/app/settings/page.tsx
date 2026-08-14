@@ -5,6 +5,7 @@ import { ChangePasswordForm } from "@/components/settings/change-password-form";
 import { StudentProfileForm } from "@/components/settings/student-profile-form";
 import { TeacherProfileForm } from "@/components/settings/teacher-profile-form";
 import { Badge, Card } from "@/components/ui/card";
+import { BackButton } from "@/components/ui/back-button";
 import { getAllCities, getGovernorates, getSubjects } from "@/lib/data/reference";
 import { getTeacherById } from "@/lib/data/teachers";
 import { getAuthContext } from "@/lib/supabase/auth-context";
@@ -34,7 +35,8 @@ export default async function SettingsPage() {
     auth.profile.account_type === "teacher" ? await getTeacherById(supabase, auth.userId) : null;
 
   return (
-    <div className="mx-auto max-w-2xl px-4 py-8 sm:px-6">
+    <div className="mx-auto max-w-2xl animate-fade-in px-4 py-8 sm:px-6">
+      <BackButton fallbackHref="/teachers" className="mb-2" />
       <h1 className="font-display text-2xl font-bold text-ink-900 dark:text-white">الإعدادات</h1>
       <p className="mt-1 text-sm text-ink-500 dark:text-ink-400">إدارة بيانات حسابك ونوعه</p>
 

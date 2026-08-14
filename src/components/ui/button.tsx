@@ -43,7 +43,7 @@ export function Button({
   return (
     <button
       className={cn(
-        "inline-flex items-center justify-center rounded-xl font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-60",
+        "inline-flex items-center justify-center rounded-xl font-medium transition-all duration-200 hover:shadow-md active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-60 disabled:active:scale-100",
         variantClasses[variant],
         sizeClasses[size],
         fullWidth && "w-full",
@@ -79,7 +79,7 @@ export function LinkButton({
     <Link
       href={href}
       className={cn(
-        "inline-flex items-center justify-center rounded-xl font-medium transition-colors",
+        "inline-flex items-center justify-center rounded-xl font-medium transition-all duration-200 hover:shadow-md active:scale-[0.97]",
         variantClasses[variant],
         sizeClasses[size],
         fullWidth && "w-full",

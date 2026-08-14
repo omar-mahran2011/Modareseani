@@ -120,17 +120,27 @@ export function SiteHeader({ user }: { user: HeaderUser | null }) {
           )}
         </div>
 
-        <button
-          className="flex size-10 items-center justify-center rounded-lg text-ink-700 md:hidden dark:text-ink-100"
-          onClick={() => setMobileOpen((v) => !v)}
-          aria-label="القائمة"
-        >
-          {mobileOpen ? <X className="size-6" /> : <Menu className="size-6" />}
-        </button>
+        <div className="flex items-center gap-1 md:hidden">
+          <ThemeToggle />
+          <button
+            className="flex size-10 items-center justify-center rounded-lg text-ink-700 transition-transform active:scale-90 dark:text-ink-100"
+            onClick={() => setMobileOpen((v) => !v)}
+            aria-label="القائمة"
+          >
+            <span className="relative flex size-6 items-center justify-center">
+              <Menu
+                className={`absolute size-6 transition-all duration-300 ${mobileOpen ? "rotate-90 opacity-0" : "rotate-0 opacity-100"}`}
+              />
+              <X
+                className={`absolute size-6 transition-all duration-300 ${mobileOpen ? "rotate-0 opacity-100" : "-rotate-90 opacity-0"}`}
+              />
+            </span>
+          </button>
+        </div>
       </div>
 
       {mobileOpen && (
-        <div className="border-t border-ink-100 px-4 py-3 md:hidden dark:border-ink-700">
+        <div className="animate-fade-in border-t border-ink-100 px-4 py-3 md:hidden dark:border-ink-700">
           <nav className="flex flex-col gap-1">
             {navLink("/teachers", "Modareseani")}
             {user?.isAdmin && navLink("/admin", "لوحة التحكم")}
@@ -150,10 +160,6 @@ export function SiteHeader({ user }: { user: HeaderUser | null }) {
                 {navLink("/signup", "إنشاء حساب")}
               </>
             )}
-            <div className="mt-2 flex items-center justify-between border-t border-ink-100 pt-3 dark:border-ink-700">
-              <span className="text-sm text-ink-500 dark:text-ink-400">المظهر</span>
-              <ThemeToggle />
-            </div>
           </nav>
         </div>
       )}

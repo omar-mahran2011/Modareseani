@@ -17,7 +17,7 @@ export default async function OnboardingPage() {
   const [governorates, cities] = await Promise.all([getGovernorates(supabase), getAllCities(supabase)]);
 
   return (
-    <div className="mx-auto flex min-h-[calc(100vh-4rem)] max-w-md flex-col justify-center px-4 py-10">
+    <div className="mx-auto flex min-h-[calc(100vh-4rem)] max-w-md animate-fade-in flex-col justify-center px-4 py-10">
       <div className="mb-6 text-center">
         <span className="mx-auto mb-3 flex size-14 items-center justify-center rounded-2xl bg-ink-800 text-gold-300 dark:bg-gold-400 dark:text-ink-950">
           <GraduationCap className="size-7" />

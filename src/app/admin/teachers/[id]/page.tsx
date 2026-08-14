@@ -2,6 +2,7 @@ import { adminUpdateTeacherAction } from "@/actions/admin";
 import type { ActionResult } from "@/actions/auth";
 import { TeacherProfileForm } from "@/components/settings/teacher-profile-form";
 import { Card } from "@/components/ui/card";
+import { BackButton } from "@/components/ui/back-button";
 import { getAllCities, getGovernorates, getSubjects } from "@/lib/data/reference";
 import { getTeacherForAdmin } from "@/lib/data/admin";
 import { createClient } from "@/lib/supabase/server";
@@ -32,7 +33,8 @@ export default async function AdminEditTeacherPage({
   }
 
   return (
-    <div className="mx-auto max-w-2xl">
+    <div className="mx-auto max-w-2xl animate-fade-in">
+      <BackButton fallbackHref="/admin/teachers" className="mb-2" />
       <h2 className="mb-4 font-display text-lg font-semibold text-ink-900 dark:text-white">
         تعديل بيانات: {teacher.display_name}
       </h2>

@@ -36,7 +36,7 @@ export function Dialog({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-ink-950/50 p-4 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex animate-fade-in items-center justify-center bg-ink-950/50 p-4 backdrop-blur-sm"
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
@@ -47,7 +47,7 @@ export function Dialog({
         role="dialog"
         aria-modal="true"
         aria-label={title}
-        className="w-full max-w-md rounded-2xl bg-white p-5 shadow-xl dark:bg-ink-800"
+        className="w-full max-w-md animate-scale-in rounded-2xl bg-white p-5 shadow-xl dark:bg-ink-800"
       >
         <div className="mb-4 flex items-center justify-between">
           <h2 className="font-display text-lg font-semibold text-ink-900 dark:text-white">{title}</h2>

@@ -61,7 +61,7 @@ export default async function TeachersPage({
   const currentCityName = cityId ? cities.find((c) => c.id === cityId)?.name : undefined;
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
+    <div className="mx-auto max-w-6xl animate-fade-in px-4 py-8 sm:px-6">
       <div className="mb-6">
         <h1 className="font-display text-2xl font-bold text-ink-900 sm:text-3xl dark:text-white">
           Modareseani
@@ -101,8 +101,14 @@ export default async function TeachersPage({
             {total} {total === 1 ? "معلم" : "معلمًا"}
           </p>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {teachers.map((teacher) => (
-              <TeacherCard key={teacher.profile_id} teacher={teacher} />
+            {teachers.map((teacher, index) => (
+              <div
+                key={teacher.profile_id}
+                className="animate-slide-up"
+                style={{ animationDelay: `${Math.min(index, 8) * 45}ms` }}
+              >
+                <TeacherCard teacher={teacher} />
+              </div>
             ))}
           </div>
           <div className="mt-8">

@@ -90,6 +90,17 @@
     background-color: var(--color-gold-200);
     color: var(--color-ink-900);
   }
+
+  a,
+  button,
+  input,
+  select,
+  textarea,
+  svg {
+    transition-property: color, background-color, border-color, box-shadow, transform, opacity;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 200ms;
+  }
 }
 
 @layer utilities {
@@ -103,6 +114,81 @@
   }
   .dark .scrollbar-thin::-webkit-scrollbar-thumb {
     background-color: var(--color-ink-600);
+  }
+
+  /* ---------- Entrance / attention keyframes ---------- */
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes scale-in {
+    from { opacity: 0; transform: scale(0.94); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  @keyframes slide-up {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes slide-in-end {
+    from { opacity: 0; transform: translateX(12px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0) translateX(0); }
+    50% { transform: translateY(-14px) translateX(6px); }
+  }
+  @keyframes bounce-subtle {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+  }
+  @keyframes wiggle {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-6deg); }
+    75% { transform: rotate(6deg); }
+  }
+  @keyframes pulse-ring {
+    0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-gold-400) 45%, transparent); }
+    100% { box-shadow: 0 0 0 10px color-mix(in srgb, var(--color-gold-400) 0%, transparent); }
+  }
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  @keyframes spin-slow {
+    to { transform: rotate(360deg); }
+  }
+  @keyframes gradient-pan {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  .animate-fade-in { animation: fade-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .animate-scale-in { animation: scale-in 0.22s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .animate-slide-up { animation: slide-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .animate-slide-in-end { animation: slide-in-end 0.4s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .animate-float { animation: float 7s ease-in-out infinite; }
+  .animate-float-slow { animation: float 11s ease-in-out infinite; }
+  .animate-bounce-subtle { animation: bounce-subtle 1.6s ease-in-out infinite; }
+  .animate-wiggle { animation: wiggle 0.4s ease-in-out; }
+  .animate-pulse-ring { animation: pulse-ring 1.6s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+  .animate-spin-slow { animation: spin-slow 6s linear infinite; }
+
+  .hover-lift {
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+  }
+  .hover-lift:hover {
+    transform: translateY(-3px);
+  }
+
+  .shimmer-bg {
+    background-image: linear-gradient(
+      100deg,
+      transparent 30%,
+      color-mix(in srgb, var(--color-gold-300) 35%, transparent) 50%,
+      transparent 70%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s ease-in-out infinite;
   }
 }
 

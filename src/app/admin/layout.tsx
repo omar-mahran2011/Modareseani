@@ -29,7 +29,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
         لوحة التحكم
       </h1>
       <AdminNav />
-      <div className="mt-6">{children}</div>
+      <div className="mt-6 animate-fade-in">{children}</div>
     </div>
   );
 }

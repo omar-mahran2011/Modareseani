@@ -20,10 +20,12 @@ export function ThemeToggle() {
     <button
       type="button"
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      className="flex size-9 items-center justify-center rounded-full text-ink-500 transition-colors hover:bg-ink-100 dark:text-ink-200 dark:hover:bg-ink-700"
+      className="flex size-9 items-center justify-center rounded-full text-ink-500 transition-all duration-300 hover:rotate-12 hover:bg-ink-100 active:scale-90 dark:text-ink-200 dark:hover:bg-ink-700"
       aria-label={isDark ? "التبديل إلى الوضع الفاتح" : "التبديل إلى الوضع الداكن"}
     >
-      {isDark ? <Sun className="size-5" /> : <Moon className="size-5" />}
+      <span className="animate-scale-in" key={isDark ? "sun" : "moon"}>
+        {isDark ? <Sun className="size-5" /> : <Moon className="size-5" />}
+      </span>
     </button>
   );
 }

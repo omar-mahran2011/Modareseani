@@ -48,11 +48,11 @@ export default async function RootPage() {
         {/* Decorative gradient mesh */}
         <div
           aria-hidden
-          className="pointer-events-none absolute -end-32 -top-32 size-[28rem] rounded-full bg-gold-400/20 blur-3xl"
+          className="animate-float pointer-events-none absolute -end-32 -top-32 size-[28rem] rounded-full bg-gold-400/20 blur-3xl"
         />
         <div
           aria-hidden
-          className="pointer-events-none absolute -start-40 top-1/2 size-[24rem] -translate-y-1/2 rounded-full bg-teal-500/10 blur-3xl"
+          className="animate-float-slow pointer-events-none absolute -start-40 top-1/2 size-[24rem] -translate-y-1/2 rounded-full bg-ink-500/10 blur-3xl"
         />
         {/* Faint ruled-notebook lines, evoking a class register */}
         <div
@@ -63,8 +63,8 @@ export default async function RootPage() {
           }}
         />
 
-        <div className="relative mx-auto max-w-5xl px-4 py-20 text-center sm:px-6 sm:py-28">
-          <span className="mx-auto mb-6 flex size-16 items-center justify-center rounded-2xl bg-gold-400 text-ink-950 shadow-lg shadow-gold-400/20">
+        <div className="relative mx-auto max-w-5xl animate-slide-up px-4 py-20 text-center sm:px-6 sm:py-28">
+          <span className="mx-auto mb-6 flex size-16 animate-bounce-subtle items-center justify-center rounded-2xl bg-gold-400 text-ink-950 shadow-lg shadow-gold-400/20">
             <GraduationCap className="size-8" />
           </span>
           <h1 className="font-display text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
@@ -75,21 +75,21 @@ export default async function RootPage() {
             في محافظتهم ومدينتهم، مع تقييمات ومراجعات حقيقية.
           </p>
           <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
-            <LinkButton href="/signup" size="lg" className="shadow-lg shadow-gold-400/10">
+            <LinkButton href="/signup" size="lg" className="shadow-lg shadow-gold-400/10 hover:-translate-y-0.5">
               إنشاء حساب مجاني
             </LinkButton>
             <LinkButton
               href="/login"
               size="lg"
-              className="border border-white/15 bg-white/5 text-white hover:bg-white/10"
+              className="border border-white/15 bg-white/5 text-white hover:-translate-y-0.5 hover:bg-white/10"
             >
               تسجيل الدخول
             </LinkButton>
           </div>
 
           <div className="mx-auto mt-16 grid max-w-lg grid-cols-3 gap-4 border-t border-white/10 pt-8">
-            {stripStats.map((s) => (
-              <div key={s.label}>
+            {stripStats.map((s, i) => (
+              <div key={s.label} className="animate-slide-up" style={{ animationDelay: `${i * 100 + 200}ms` }}>
                 <p className="font-display text-2xl font-bold text-gold-300 sm:text-3xl">{s.value}+</p>
                 <p className="mt-1 text-xs text-ink-300 sm:text-sm">{s.label}</p>
               </div>
@@ -100,12 +100,13 @@ export default async function RootPage() {
 
       <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-20">
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-3">
-          {features.map((f) => (
+          {features.map((f, i) => (
             <div
               key={f.title}
-              className="group rounded-2xl border border-ink-100 bg-white p-5 text-center transition-all hover:-translate-y-1 hover:shadow-lg dark:border-ink-700 dark:bg-ink-800/60"
+              className="hover-lift animate-slide-up group rounded-2xl border border-ink-100 bg-white p-5 text-center hover:shadow-lg dark:border-ink-700 dark:bg-ink-800/60"
+              style={{ animationDelay: `${i * 100}ms` }}
             >
-              <span className="mx-auto flex size-11 items-center justify-center rounded-xl bg-gold-100 text-gold-600 transition-colors group-hover:bg-gold-400 group-hover:text-ink-950 dark:bg-gold-400/10 dark:text-gold-300">
+              <span className="mx-auto flex size-11 items-center justify-center rounded-xl bg-gold-100 text-gold-600 transition-all duration-300 group-hover:rotate-6 group-hover:bg-gold-400 group-hover:text-ink-950 dark:bg-gold-400/10 dark:text-gold-300">
                 <f.icon className="size-5" />
               </span>
               <h2 className="mt-3 font-display text-base font-semibold text-ink-900 dark:text-white">
@@ -122,7 +123,7 @@ export default async function RootPage() {
             أنشئ ملفك الشخصي مجانًا واظهر أمام آلاف الطلاب وأولياء الأمور الباحثين
             عن معلمين في منطقتك.
           </p>
-          <LinkButton href="/signup" size="lg" className="mt-6">
+          <LinkButton href="/signup" size="lg" className="mt-6 hover:-translate-y-0.5">
             سجّل كمعلم الآن
           </LinkButton>
         </div>
