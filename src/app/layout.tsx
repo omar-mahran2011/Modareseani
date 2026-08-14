@@ -12,7 +12,15 @@ export const metadata: Metadata = {
     template: `%s | ${SITE_NAME}`,
   },
   description:
-    "دليل المعلمين يساعدك على إيجاد أفضل المعلمين الخصوصيين في محافظتك ومدينتك، مع تقييمات حقيقية من الطلاب وأولياء الأمور.",
+    "Modareseani يساعدك على إيجاد أفضل المعلمين الخصوصيين في محافظتك ومدينتك، مع تقييمات حقيقية من الطلاب وأولياء الأمور.",
+  openGraph: {
+    siteName: SITE_NAME,
+    title: `${SITE_NAME} | ابحث عن معلمك الخصوصي بسهولة`,
+    description:
+      "Modareseani يساعدك على إيجاد أفضل المعلمين الخصوصيين في محافظتك ومدينتك، مع تقييمات حقيقية من الطلاب وأولياء الأمور.",
+    locale: "ar_EG",
+    type: "website",
+  },
   verification: {
     // Set GOOGLE_SITE_VERIFICATION in your environment variables (the code
     // Google Search Console gives you when you choose the "HTML tag"

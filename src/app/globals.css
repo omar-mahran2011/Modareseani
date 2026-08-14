@@ -4,27 +4,27 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  /* Design system generated via ui-ux-pro-max (Marketplace/Directory pattern,
-     trust-purple + transaction-green palette, Arabic typography pairing) */
+  /* Simplified, intentionally minimal palette: neutral gray/black/white as
+     the structure, with a single gold accent used consistently everywhere
+     (buttons, ratings, highlights, branding) — no competing hues. */
   --font-display: "Noto Naskh Arabic", ui-sans-serif, system-ui, serif;
   --font-body: "Noto Sans Arabic", ui-sans-serif, system-ui, sans-serif;
 
-  /* Ink (violet) — primary brand color, headers, dark surfaces */
-  --color-ink-50: #f5f3ff;
-  --color-ink-100: #ede9fe;
-  --color-ink-200: #ddd6fe;
-  --color-ink-300: #c4b5fd;
-  --color-ink-400: #a78bfa;
-  --color-ink-500: #8b5cf6;
-  --color-ink-600: #7c3aed;
-  --color-ink-700: #6d28d9;
-  --color-ink-800: #5b21b6;
-  --color-ink-900: #3b1774;
-  --color-ink-950: #1e1030;
+  /* Ink (neutral gray) — text, borders, dark-mode surfaces */
+  --color-ink-50: #fafafa;
+  --color-ink-100: #f4f4f5;
+  --color-ink-200: #e4e4e7;
+  --color-ink-300: #d4d4d8;
+  --color-ink-400: #a1a1aa;
+  --color-ink-500: #71717a;
+  --color-ink-600: #52525b;
+  --color-ink-700: #3f3f46;
+  --color-ink-800: #27272a;
+  --color-ink-900: #18181b;
+  --color-ink-950: #09090b;
 
-  /* Gold — reserved specifically for star ratings (kept amber/gold on
-     purpose: universally recognized rating convention, not the brand
-     accent — see teal below for the actual CTA/success accent) */
+  /* Gold — the one accent color, used everywhere: buttons, ratings,
+     highlights, branding. Consistent, no second competing hue. */
   --color-gold-50: #fdf7ea;
   --color-gold-100: #faecc8;
   --color-gold-200: #f4d78d;
@@ -34,16 +34,17 @@
   --color-gold-600: #9c6720;
   --color-gold-700: #7a501b;
 
-  /* Teal (green) — the design system's "transaction green": published /
-     verified / success state and CTA accents */
-  --color-teal-50: #f0fdf4;
-  --color-teal-100: #dcfce7;
-  --color-teal-400: #4ade80;
-  --color-teal-500: #22c55e;
-  --color-teal-600: #16a34a;
+  /* Teal kept only as a muted gray-gold alias for "published" status so old
+     class references still resolve to something sensible in the new
+     minimal palette — not a real second accent color. */
+  --color-teal-50: #fdf7ea;
+  --color-teal-100: #faecc8;
+  --color-teal-400: #dfa23b;
+  --color-teal-500: #c2842a;
+  --color-teal-600: #9c6720;
 
-  --color-paper: #faf5ff;
-  --color-paper-dark: #1e1030;
+  --color-paper: #ffffff;
+  --color-paper-dark: #0a0a0a;
 }
 
 @layer base {

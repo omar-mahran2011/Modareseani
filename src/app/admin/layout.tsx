@@ -18,7 +18,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
           هذه الصفحة للمشرفين فقط
         </h1>
         <p className="text-ink-500 dark:text-ink-400">لا تملك صلاحية الوصول إلى لوحة التحكم.</p>
-        <LinkButton href="/teachers">العودة إلى دليل المعلمين</LinkButton>
+        <LinkButton href="/teachers">العودة إلى Modareseani</LinkButton>
       </div>
     );
   }

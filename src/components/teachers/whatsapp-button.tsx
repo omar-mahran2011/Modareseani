@@ -7,7 +7,7 @@ function toWhatsAppLink(number: string) {
 
 export function WhatsAppButton({ number, teacherName }: { number: string; teacherName: string }) {
   const href = `${toWhatsAppLink(number)}?text=${encodeURIComponent(
-    `مرحبًا ${teacherName}، شاهدت ملفك على دليل المعلمين وأود الاستفسار عن الدروس الخصوصية.`
+    `مرحبًا ${teacherName}، شاهدت ملفك على Modareseani وأود الاستفسار عن الدروس الخصوصية.`
   )}`;
 
   return (

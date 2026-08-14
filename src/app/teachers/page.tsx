@@ -8,7 +8,7 @@ import { createClient } from "@/lib/supabase/server";
 import { Users2 } from "lucide-react";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = { title: "دليل المعلمين" };
+export const metadata: Metadata = { title: "Modareseani" };
 
 const PAGE_SIZE = 12;
 
@@ -64,7 +64,7 @@ export default async function TeachersPage({
     <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
       <div className="mb-6">
         <h1 className="font-display text-2xl font-bold text-ink-900 sm:text-3xl dark:text-white">
-          دليل المعلمين
+          Modareseani
         </h1>
         <p className="mt-1 text-sm text-ink-500 dark:text-ink-400">
           {currentCityName || currentGovernorateName

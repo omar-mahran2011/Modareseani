@@ -13,7 +13,7 @@ export default function NotFound() {
       <p className="text-ink-500 dark:text-ink-400">
         الرابط الذي فتحته غير صحيح أو تم نقل الصفحة.
       </p>
-      <LinkButton href="/teachers">العودة إلى دليل المعلمين</LinkButton>
+      <LinkButton href="/teachers">العودة إلى Modareseani</LinkButton>
     </div>
   );
 }

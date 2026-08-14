@@ -1,6 +1,7 @@
 import { ReviewForm } from "@/components/teachers/review-form";
 import { ReviewList } from "@/components/teachers/review-list";
 import { WhatsAppButton } from "@/components/teachers/whatsapp-button";
+import { CopyLinkButton } from "@/components/teachers/copy-link-button";
 import { Avatar, Badge, Card } from "@/components/ui/card";
 import { RatingBadge, StarRatingDisplay } from "@/components/ui/star-rating";
 import {
@@ -103,6 +104,7 @@ export default async function TeacherProfilePage({
               {teacher.whatsapp && (
                 <WhatsAppButton number={teacher.whatsapp} teacherName={teacher.display_name} />
               )}
+              <CopyLinkButton />
             </div>
           </div>
         </div>

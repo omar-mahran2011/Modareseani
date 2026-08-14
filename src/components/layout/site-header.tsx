@@ -55,7 +55,7 @@ export function SiteHeader({ user }: { user: HeaderUser | null }) {
         </Link>
 
         <nav className="hidden items-center gap-1 md:flex">
-          {navLink("/teachers", "دليل المعلمين")}
+          {navLink("/teachers", "Modareseani")}
           {user?.isAdmin && navLink("/admin", "لوحة التحكم")}
         </nav>
 
@@ -132,7 +132,7 @@ export function SiteHeader({ user }: { user: HeaderUser | null }) {
       {mobileOpen && (
         <div className="border-t border-ink-100 px-4 py-3 md:hidden dark:border-ink-700">
           <nav className="flex flex-col gap-1">
-            {navLink("/teachers", "دليل المعلمين")}
+            {navLink("/teachers", "Modareseani")}
             {user?.isAdmin && navLink("/admin", "لوحة التحكم")}
             {user ? (
               <>

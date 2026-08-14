@@ -55,4 +55,4 @@ export const EDUCATION_SYSTEM_OPTIONS = [
 export const MAX_AVATAR_SIZE_BYTES = 5 * 1024 * 1024;
 export const ACCEPTED_IMAGE_TYPES = ["image/png", "image/jpeg", "image/webp"];
 
-export const SITE_NAME = "دليل المعلمين";
+export const SITE_NAME = "Modareseani";
