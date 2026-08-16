@@ -39,3 +39,19 @@ export function buildLocationLookup(governorates: Governorate[], cities: City[])
   const cityNameById = new Map(cities.map((c) => [c.id, c.name]));
   return { governorateNameById, cityNameById };
 }
+
+/**
+ * Public, RLS-safe stats for the signed-out landing page. Uses the
+ * get_public_stats() security-definer function (see migration 0008) since
+ * the anon role can't otherwise count rows in `teachers`/`reviews`.
+ */
+export async function getPublicStats(
+  supabase: Client
+): Promise<{ publishedTeachers: number; totalReviews: number }> {
+  const { data, error } = await supabase.rpc("get_public_stats").single();
+  if (error) throw new Error(error.message);
+  return {
+    publishedTeachers: data?.published_teachers ?? 0,
+    totalReviews: data?.total_reviews ?? 0,
+  };
+}

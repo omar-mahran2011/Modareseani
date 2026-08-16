@@ -2,7 +2,10 @@ import type { Metadata, Viewport } from "next";
 import { Providers } from "@/components/layout/providers";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
+import { PageTransition } from "@/components/layout/page-transition";
+import { TopProgressBar } from "@/components/layout/top-progress-bar";
 import { SITE_NAME } from "@/lib/constants";
+import { Suspense } from "react";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -33,8 +36,8 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#faf5ff" },
-    { media: "(prefers-color-scheme: dark)", color: "#1e1030" },
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
   ],
 };
 
@@ -52,9 +55,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className="min-h-screen font-body antialiased">
         <Providers>
+          <Suspense fallback={null}>
+            <TopProgressBar />
+          </Suspense>
           <div className="flex min-h-screen flex-col">
             <Navbar />
-            <main className="flex-1">{children}</main>
+            <main className="flex-1">
+              <PageTransition>{children}</PageTransition>
+            </main>
             <Footer />
           </div>
         </Providers>

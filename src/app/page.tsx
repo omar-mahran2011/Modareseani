@@ -1,5 +1,5 @@
 import { getAuthContext } from "@/lib/supabase/auth-context";
-import { getAdminStats } from "@/lib/data/admin";
+import { getPublicStats } from "@/lib/data/reference";
 import { createClient } from "@/lib/supabase/server";
 import { LinkButton } from "@/components/ui/button";
 import { SITE_NAME } from "@/lib/constants";
@@ -15,7 +15,7 @@ export default async function RootPage() {
   }
 
   const supabase = await createClient();
-  const stats = await getAdminStats(supabase);
+  const stats = await getPublicStats(supabase);
 
   const features = [
     {

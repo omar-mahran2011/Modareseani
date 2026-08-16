@@ -167,7 +167,12 @@ export interface Database {
       };
     };
     Views: Record<string, never>;
-    Functions: Record<string, never>;
+    Functions: {
+      get_public_stats: {
+        Args: Record<string, never>;
+        Returns: { published_teachers: number; total_reviews: number }[];
+      };
+    };
   };
 }
 
