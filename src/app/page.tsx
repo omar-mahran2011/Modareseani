@@ -15,7 +15,10 @@ export default async function RootPage() {
   }
 
   const supabase = await createClient();
-  const stats = await getPublicStats(supabase);
+  const stats = await getPublicStats(supabase).catch(() => ({
+    publishedTeachers: 0,
+    totalReviews: 0,
+  }));
 
   const features = [
     {
