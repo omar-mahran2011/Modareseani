@@ -2,6 +2,7 @@ import { ReviewForm } from "@/components/teachers/review-form";
 import { ReviewList } from "@/components/teachers/review-list";
 import { WhatsAppButton } from "@/components/teachers/whatsapp-button";
 import { CopyLinkButton } from "@/components/teachers/copy-link-button";
+import { FounderBadge } from "@/components/teachers/founder-badge";
 import { Avatar, Badge, Card } from "@/components/ui/card";
 import { BackButton } from "@/components/ui/back-button";
 import { RatingBadge, StarRatingDisplay } from "@/components/ui/star-rating";
@@ -17,7 +18,7 @@ import {
 } from "@/lib/data/teachers";
 import { getAuthContext } from "@/lib/supabase/auth-context";
 import { createClient } from "@/lib/supabase/server";
-import { formatExperience, formatRatingsCount } from "@/lib/utils";
+import { formatExperience, formatRatingsCount, formatRelativeArabicDate } from "@/lib/utils";
 import { BookOpen, Clock, GraduationCap, Laptop2, Phone } from "lucide-react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -66,20 +67,43 @@ export default async function TeacherProfilePage({
         </div>
       )}
 
-      <Card className="p-6">
+      <Card
+        className={
+          teacher.is_founder
+            ? "overflow-hidden border-gold-300 bg-gradient-to-br from-gold-50 to-white p-6 dark:border-gold-400/50 dark:from-gold-400/10 dark:to-ink-800/60"
+            : "p-6"
+        }
+      >
         <div className="flex flex-col items-start gap-5 sm:flex-row">
-          <Avatar src={teacher.avatar_url} name={teacher.display_name} size={112} />
+          <Avatar
+            src={teacher.avatar_url}
+            name={teacher.display_name}
+            size={112}
+            className={
+              teacher.is_founder
+                ? "ring-4 ring-gold-400 ring-offset-2 ring-offset-white dark:ring-offset-ink-900"
+                : ""
+            }
+          />
           <div className="min-w-0 flex-1">
             <div className="flex flex-wrap items-center justify-between gap-3">
-              <h1 className="font-display text-2xl font-bold text-ink-900 dark:text-white">
-                {teacher.display_name}
-              </h1>
+              <div className="flex flex-wrap items-center gap-2">
+                <h1 className="font-display text-2xl font-bold text-ink-900 dark:text-white">
+                  {teacher.display_name}
+                </h1>
+                {teacher.is_founder && <FounderBadge />}
+              </div>
               <RatingBadge value={teacher.avg_rating} count={teacher.ratings_count} />
             </div>
             <div className="mt-1 flex items-center gap-1.5 text-sm text-ink-500 dark:text-ink-400">
               <StarRatingDisplay value={teacher.avg_rating} />
               <span>{formatRatingsCount(teacher.ratings_count)}</span>
             </div>
+            {teacher.is_founder && (
+              <p className="mt-1 text-xs font-medium text-gold-600 dark:text-gold-400">
+                عضو مؤسس منذ {formatRelativeArabicDate(teacher.created_at)}
+              </p>
+            )}
             <p className="mt-1 text-sm text-ink-500 dark:text-ink-400">
               {[teacher.city_name, teacher.governorate_name].filter(Boolean).join("، ")}
             </p>

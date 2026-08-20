@@ -98,6 +98,7 @@ export interface Database {
           phone: string | null;
           whatsapp: string | null;
           is_published: boolean;
+          is_founder: boolean;
           avg_rating: number;
           ratings_count: number;
           created_at: string;
@@ -118,6 +119,7 @@ export interface Database {
           phone?: string | null;
           whatsapp?: string | null;
           is_published?: boolean;
+          is_founder?: boolean;
         };
         Update: {
           bio?: string;
@@ -128,6 +130,7 @@ export interface Database {
           available_times?: string;
           whatsapp?: string | null;
           is_published?: boolean;
+          is_founder?: boolean;
         };
         Relationships: NoRelationships;
       };

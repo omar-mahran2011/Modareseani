@@ -24,6 +24,7 @@ const ADMIN_TEACHER_SELECT = `
   phone,
   whatsapp,
   is_published,
+  is_founder,
   avg_rating,
   ratings_count,
   created_at,

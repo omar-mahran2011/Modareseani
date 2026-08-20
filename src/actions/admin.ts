@@ -47,6 +47,25 @@ export async function adminSetTeacherPublishedAction(
   return { success: true };
 }
 
+export async function adminSetTeacherFounderAction(
+  teacherId: string,
+  isFounder: boolean
+): Promise<ActionResult> {
+  const { supabase, user, error } = await requireAdmin();
+  if (error || !user) return { error: error ?? "غير مصرح" };
+
+  const { error: updateError } = await supabase
+    .from("teachers")
+    .update({ is_founder: isFounder })
+    .eq("profile_id", teacherId);
+  if (updateError) return { error: updateError.message };
+
+  revalidatePath("/admin/teachers");
+  revalidatePath("/teachers");
+  revalidatePath(`/teachers/${teacherId}`);
+  return { success: true };
+}
+
 export async function adminUpdateTeacherAction(
   teacherId: string,
   formData: FormData

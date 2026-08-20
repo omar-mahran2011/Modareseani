@@ -29,6 +29,7 @@ const TEACHER_SELECT = `
   phone,
   whatsapp,
   is_published,
+  is_founder,
   avg_rating,
   ratings_count,
   created_at,
@@ -53,6 +54,7 @@ function mapTeacherRow(row: any): TeacherWithProfile {
     phone: row.phone,
     whatsapp: row.whatsapp,
     is_published: row.is_published,
+    is_founder: row.is_founder ?? false,
     avg_rating: Number(row.avg_rating ?? 0),
     ratings_count: row.ratings_count ?? 0,
     created_at: row.created_at,
@@ -114,6 +116,10 @@ export async function getTeachers(
   if (filters.query) teacherQuery = teacherQuery.ilike("display_name", `%${filters.query}%`);
   if (filters.minRating) teacherQuery = teacherQuery.gte("avg_rating", filters.minRating);
   if (filters.minExperience) teacherQuery = teacherQuery.gte("years_experience", filters.minExperience);
+
+  // Founders always get priority placement, regardless of sort mode —
+  // within that, the chosen sort still applies.
+  teacherQuery = teacherQuery.order("is_founder", { ascending: false });
 
   switch (filters.sort) {
     case "experience":
