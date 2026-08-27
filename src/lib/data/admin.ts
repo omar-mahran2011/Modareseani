@@ -1,5 +1,5 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
-import type { AdminReviewRow, AdminTeacherRow, AdminUserRow, Database } from "@/lib/types/database";
+import type { AdminReviewRow, AdminTeacherRow, AdminUserRow, Database, SupportMessage } from "@/lib/types/database";
 import { buildLocationLookup, getAllCities, getGovernorates } from "@/lib/data/reference";
 
 type Client = SupabaseClient<Database>;
@@ -157,4 +157,14 @@ export async function getAllReviewsForAdmin(supabase: Client): Promise<AdminRevi
     stars: starsByRatingId.get(r.rating_id) ?? 0,
     teacher_name: teacherNameById.get(r.teacher_id) ?? "معلم",
   }));
+}
+
+export async function getAllSupportMessagesForAdmin(supabase: Client): Promise<SupportMessage[]> {
+  const { data, error } = await supabase
+    .from("support_messages")
+    .select("*")
+    .order("status", { ascending: true }) // "open" before "resolved"
+    .order("created_at", { ascending: false });
+  if (error) throw new Error(error.message);
+  return data ?? [];
 }

@@ -15,6 +15,12 @@ import { toast } from "sonner";
 const initialState: ActionResult = {};
 
 async function formAction(_prev: ActionResult, formData: FormData): Promise<ActionResult> {
+  // Honeypot: a hidden field real users never fill. If a bot filled it,
+  // silently pretend success instead of creating an account.
+  if (String(formData.get("website") ?? "").length > 0) {
+    return { success: true };
+  }
+
   const accountType = String(formData.get("accountType") ?? "student");
   if (accountType === "teacher") {
     return signUpTeacherAction(formData);
@@ -105,6 +111,12 @@ export function SignupForm({
 
       <form action={action} className="space-y-4" encType="multipart/form-data">
         <input type="hidden" name="accountType" value={accountType} />
+        <div className="hidden" aria-hidden="true">
+          <label>
+            Website
+            <input type="text" name="website" tabIndex={-1} autoComplete="off" />
+          </label>
+        </div>
 
         {accountType === "teacher" && (
           <div className="flex flex-col items-center gap-2">

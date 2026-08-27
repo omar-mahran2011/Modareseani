@@ -13,6 +13,8 @@ export type EducationSystem =
   | "stem"
   | "other";
 export type AppRole = "admin";
+export type SupportCategory = "technical" | "report_teacher" | "inquiry" | "suggestion" | "other";
+export type SupportStatus = "open" | "resolved";
 
 // @supabase/postgrest-js requires every table entry to also declare
 // `Relationships` (used for typed embedded-resource joins) and every schema
@@ -168,6 +170,32 @@ export interface Database {
         Update: { comment?: string };
         Relationships: NoRelationships;
       };
+      support_messages: {
+        Row: {
+          id: number;
+          user_id: string;
+          full_name: string;
+          email: string;
+          category: SupportCategory;
+          related_teacher_id: string | null;
+          message: string;
+          status: SupportStatus;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          user_id: string;
+          full_name: string;
+          email: string;
+          category?: SupportCategory;
+          related_teacher_id?: string | null;
+          message: string;
+        };
+        Update: {
+          status?: SupportStatus;
+        };
+        Relationships: NoRelationships;
+      };
     };
     Views: Record<string, never>;
     Functions: {
@@ -186,6 +214,7 @@ export type Profile = Database["public"]["Tables"]["profiles"]["Row"];
 export type Teacher = Database["public"]["Tables"]["teachers"]["Row"];
 export type Rating = Database["public"]["Tables"]["ratings"]["Row"];
 export type Review = Database["public"]["Tables"]["reviews"]["Row"];
+export type SupportMessage = Database["public"]["Tables"]["support_messages"]["Row"];
 
 /** A published (or own/admin-visible) teacher, ready for card/profile display. */
 export interface TeacherWithProfile extends Teacher {

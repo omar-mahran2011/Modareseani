@@ -5,7 +5,7 @@ import { Avatar } from "@/components/ui/card";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { SITE_NAME } from "@/lib/constants";
 import { cn } from "@/lib/utils";
-import { GraduationCap, LayoutDashboard, LogOut, Menu, Settings, X } from "lucide-react";
+import { GraduationCap, LayoutDashboard, LifeBuoy, LogOut, Menu, Settings, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
@@ -83,6 +83,13 @@ export function SiteHeader({ user }: { user: HeaderUser | null }) {
                     >
                       <Settings className="size-4" /> الإعدادات
                     </Link>
+                    <Link
+                      href="/support"
+                      onClick={() => setMenuOpen(false)}
+                      className="flex items-center gap-2 px-4 py-2.5 text-sm text-ink-700 hover:bg-ink-50 dark:text-ink-100 dark:hover:bg-ink-700"
+                    >
+                      <LifeBuoy className="size-4" /> الدعم والتواصل
+                    </Link>
                     {user.isAdmin && (
                       <Link
                         href="/admin"
@@ -147,6 +154,7 @@ export function SiteHeader({ user }: { user: HeaderUser | null }) {
             {user ? (
               <>
                 {navLink("/settings", "الإعدادات")}
+                {navLink("/support", "الدعم والتواصل")}
                 <button
                   onClick={handleLogout}
                   className="rounded-lg px-3 py-2 text-start text-sm font-medium text-red-600 hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-500/10"

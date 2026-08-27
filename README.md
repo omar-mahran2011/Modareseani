@@ -32,6 +32,10 @@ is the template for other environments/CI.
 | `NEXT_PUBLIC_SUPABASE_URL` | Yes | Already set |
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Yes | Already set (publishable key) |
 | `SUPABASE_SERVICE_ROLE_KEY` | No | Only needed for the admin dashboard's "create a teacher account directly" feature (`adminCreateTeacherAccountAction`). Get it from Supabase Dashboard → Project Settings → API → service_role. **Never** prefix it with `NEXT_PUBLIC_` — it must stay server-only. Everything else in the app works fully without it, since teachers normally self-register. |
+| `RESEND_API_KEY` | No | Enables an email notification to `ADMIN_NOTIFICATION_EMAIL` whenever someone submits the support/contact form. Get a free key at [resend.com](https://resend.com) (no credit card needed for the free tier). Without it, messages still save and appear in `/admin/support` — you just won't get an email ping. |
+| `ADMIN_NOTIFICATION_EMAIL` | No | The email address that receives support-form notifications (only used if `RESEND_API_KEY` is also set). |
+| `RESEND_FROM_EMAIL` | No | Defaults to Resend's shared testing address. Once you verify your own domain in Resend, set this to something like `Modareseani <support@yourdomain.com>`. |
+| `GOOGLE_SITE_VERIFICATION` | No | The code from Google Search Console's "HTML tag" verification method. |
 | `NEXT_PUBLIC_SITE_URL` | Recommended | Your deployed URL (e.g. `https://your-app.vercel.app`), used to build password-reset email links. Defaults to relative behavior if unset, but set this in production. |
 
 ## 3. Apply the database migrations

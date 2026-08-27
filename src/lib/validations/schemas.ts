@@ -97,6 +97,15 @@ export const referenceItemSchema = z.object({
   name: z.string().trim().min(2, "الاسم مطلوب").max(100),
 });
 
+export const supportMessageSchema = z.object({
+  fullName: z.string().trim().min(2, "الاسم مطلوب").max(100),
+  email: z.string().trim().email("بريد إلكتروني غير صحيح"),
+  category: z.enum(["technical", "report_teacher", "inquiry", "suggestion", "other"]),
+  relatedTeacherId: z.string().uuid().optional().or(z.literal("")),
+  message: z.string().trim().min(10, "الرسالة يجب أن تكون 10 أحرف على الأقل").max(2000),
+  website: z.string().max(0).optional().or(z.literal("")), // honeypot: real users never fill this
+});
+
 export const citySchema = z.object({
   governorateId: z.coerce.number().int().positive("اختر المحافظة"),
   name: z.string().trim().min(2, "الاسم مطلوب").max(100),

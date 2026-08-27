@@ -56,3 +56,19 @@ export const MAX_AVATAR_SIZE_BYTES = 5 * 1024 * 1024;
 export const ACCEPTED_IMAGE_TYPES = ["image/png", "image/jpeg", "image/webp"];
 
 export const SITE_NAME = "Modareseani";
+
+export const SUPPORT_CATEGORY_LABELS: Record<string, string> = {
+  technical: "مشكلة تقنية",
+  report_teacher: "الإبلاغ عن معلم",
+  inquiry: "استفسار عام",
+  suggestion: "اقتراح لتحسين الموقع",
+  other: "أخرى",
+};
+
+export const SUPPORT_CATEGORY_OPTIONS = [
+  { value: "technical", label: "مشكلة تقنية" },
+  { value: "report_teacher", label: "الإبلاغ عن معلم" },
+  { value: "inquiry", label: "استفسار عام" },
+  { value: "suggestion", label: "اقتراح لتحسين الموقع" },
+  { value: "other", label: "أخرى" },
+] as const;

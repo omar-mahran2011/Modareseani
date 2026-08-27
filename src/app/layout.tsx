@@ -6,6 +6,7 @@ import { PageTransition } from "@/components/layout/page-transition";
 import { TopProgressBar } from "@/components/layout/top-progress-bar";
 import { SITE_NAME } from "@/lib/constants";
 import { Suspense } from "react";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -65,6 +66,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </main>
             <Footer />
           </div>
+          <Analytics />
         </Providers>
       </body>
     </html>

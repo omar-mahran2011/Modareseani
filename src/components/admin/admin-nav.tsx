@@ -9,6 +9,7 @@ const TABS = [
   { href: "/admin/teachers", label: "المعلمون" },
   { href: "/admin/users", label: "المستخدمون" },
   { href: "/admin/reviews", label: "التقييمات" },
+  { href: "/admin/support", label: "رسائل الدعم" },
   { href: "/admin/governorates", label: "المحافظات" },
   { href: "/admin/cities", label: "المدن" },
   { href: "/admin/subjects", label: "المواد" },
