@@ -78,9 +78,12 @@ export default async function RootPage() {
             في محافظتهم ومدينتهم، مع تقييمات ومراجعات حقيقية.
           </p>
           <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
-            <LinkButton href="/signup" size="lg" className="shadow-lg shadow-gold-400/10 hover:-translate-y-0.5">
-              إنشاء حساب مجاني
-            </LinkButton>
+            <span className="relative inline-flex">
+              <span className="animate-pulse-ring absolute inset-0 rounded-xl" />
+              <LinkButton href="/signup" size="lg" className="relative shadow-lg shadow-gold-400/10 hover:-translate-y-0.5">
+                إنشاء حساب مجاني
+              </LinkButton>
+            </span>
             <LinkButton
               href="/login"
               size="lg"

@@ -7,8 +7,8 @@
   /* Simplified, intentionally minimal palette: neutral gray/black/white as
      the structure, with a single gold accent used consistently everywhere
      (buttons, ratings, highlights, branding) — no competing hues. */
-  --font-display: "Noto Naskh Arabic", ui-sans-serif, system-ui, serif;
-  --font-body: "Noto Sans Arabic", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Noto Naskh Arabic", "Noto Serif", ui-sans-serif, system-ui, serif;
+  --font-body: "Noto Sans Arabic", "Noto Sans", ui-sans-serif, system-ui, sans-serif;
 
   /* Ink (neutral gray) — text, borders, dark-mode surfaces */
   --color-ink-50: #fafafa;
